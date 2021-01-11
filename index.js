@@ -6,11 +6,13 @@ app.get("/", (req, res) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
       window.now = () => {
-        console.log('now!')
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", () => {});
-        oReq.open("GET", "/");
-        oReq.send();
+        setTimeout(() => {
+          console.log('now!')
+          var oReq = new XMLHttpRequest();
+          oReq.addEventListener("load", () => {});
+          oReq.open("GET", "/");
+          oReq.send();
+        }, 10)
       }
     </script>
     <a href="/file" download onclick="window.now()">download</a>
