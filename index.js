@@ -7,7 +7,10 @@ app.get("/", (req, res) => {
     <script>
       window.now = () => {
         console.log('now!')
-        fetch('/');
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", () => {});
+        oReq.open("GET", "/");
+        oReq.send();
       }
     </script>
     <a href="/file" download onclick="window.now()">download</a>
