@@ -14,8 +14,10 @@ app.get("/", (req, res) => {
   );
 });
 app.get("/download", (req, res) => {
-  res.redirect(
-    "https://httpbin.org/response-headers?Content-Disposition=attachment;%20filename%3d%22test.json%22"
-  );
+  res.redirect("/file");
+});
+app.get("/file", (req, res) => {
+  res.set("Content-Disposition", 'attachment; filename="test.json"');
+  res.send();
 });
 app.listen(process.env.PORT, () => console.log("running"));
