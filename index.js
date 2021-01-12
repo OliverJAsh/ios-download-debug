@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
     <script>
       window.now = () => {
         console.log('now!')
-        fetch('https://httpbin.org/get');
+        fetch('/');
       }
     </script>
     <a href="/file" download onclick="window.now()">download</a>
