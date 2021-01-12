@@ -10,11 +10,9 @@ app.get("/", (req, res) => {
         fetch('https://httpbin.org/post', { method: 'POST' });
       }
     </script>
-    <a href="/download" download onclick="window.now()">download</a>`
+    <a href="/file" download onclick="window.now()">download</a>
+  `
   );
-});
-app.get("/download", (req, res) => {
-  res.redirect("/file");
 });
 app.get("/file", (req, res) => {
   res.set("Content-Disposition", 'attachment; filename="test.json"');
