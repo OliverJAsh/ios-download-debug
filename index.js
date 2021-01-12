@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const app = express();
 app.get("/", (req, res) => {
@@ -11,20 +12,20 @@ app.get("/", (req, res) => {
     <script>
       window.now = () => {
         setTimeout(() => {
-          console.log('now!')
+          console.log('now!', window.location.href)
           var oReq = new XMLHttpRequest();
           oReq.addEventListener("load", () => {});
           oReq.open("GET", "/");
           oReq.send();
 
           const img = document.createElement('img');
-          img.src = 'https://images.unsplash.com/file-1606243029859-9e03fb70d982image';
+          img.src = '/logo.svg';
           document.body.appendChild(img);
         }, 10)
       }
     </script>
     <a href="/file" download onclick="window.now()">download</a>
-    <!-- <img src="https://images.unsplash.com/file-1606243029859-9e03fb70d982image" /> -->
+    <!-- <img src="/logo.svg" /> -->
   `
   );
 });
@@ -32,4 +33,7 @@ app.get("/file", (req, res) => {
   res.set("Content-Disposition", 'attachment; filename="test.json"');
   res.send();
 });
+app.get("/logo.svg", (req, res) =>
+  res.sendFile(path.join(__dirname, "./logo.svg"))
+);
 app.listen(process.env.PORT, () => console.log("running"));
